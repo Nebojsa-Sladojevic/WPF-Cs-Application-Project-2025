@@ -51,7 +51,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
                     <Button Content="Dashboard"/>
-                    <Button Content="Documents"/>
+                    <Button Content="Documents" Tag="DocumentsView" Click="SelectTab"/>
                     <Separator Visibility="Hidden" Height="40"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
@@ -79,7 +79,7 @@
             </Grid>
         </ScrollViewer>
         <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-            <ContentControl/>
+            <ContentControl x:Name="TabContent"/>
         </ScrollViewer>
     </Grid>
 </Window>

@@ -1,0 +1,204 @@
+﻿<UserControl x:Class="ClientApplication.Panels.DocumentsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClientApplication.Panels"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Documents" FontSize="20" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Menu>
+                    <MenuItem Header="Select">
+                        <MenuItem Header="Select none"/>
+                        <MenuItem Header="Select page"/>
+                        <MenuItem Header="Select all"/>
+                    </MenuItem>
+                </Menu>
+                <Menu>
+                    <MenuItem Header="Show">
+                        <CheckBox Content="Title" IsChecked="True"/>
+                        <CheckBox Content="Created" IsChecked="True"/>
+                        <CheckBox Content="Added" IsChecked="False"/>
+                        <CheckBox Content="Tags" IsChecked="True"/>
+                        <CheckBox Content="Correspondent" IsChecked="True"/>
+                        <CheckBox Content="Document type" IsChecked="True"/>
+                        <CheckBox Content="Storag path" IsChecked="True"/>
+                        <CheckBox Content="Notes" IsChecked="True"/>
+                        <CheckBox Content="Shared" IsChecked="True"/>
+                        <CheckBox Content="ASN" IsChecked="True"/>
+                        <CheckBox Content="Pages" IsChecked="True"/>
+                    </MenuItem>
+                </Menu>
+                <RadioButton GroupName="ViewDocuments" Content="List"/>
+                <RadioButton GroupName="ViewDocuments" Content="Grid" IsChecked="True"/>
+                <RadioButton GroupName="ViewDocuments" Content="Tiles"/>
+                <Menu>
+                    <MenuItem Header="Sort">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton GroupName="SortOrder" Content="A to Z"/>
+                            <Separator Width="20" Visibility="Hidden"/>
+                            <RadioButton GroupName="SortOrder" Content="Z to A" IsChecked="True"/>
+                        </StackPanel>
+                        <MenuItem Header="ASN"/>
+                        <MenuItem Header="Correspondent"/>
+                        <MenuItem Header="Title"/>
+                        <MenuItem Header="Document type"/>
+                        <MenuItem Header="Created"/>
+                        <MenuItem Header="Added"/>
+                        <MenuItem Header="Modified"/>
+                        <MenuItem Header="Notes"/>
+                        <MenuItem Header="Pages"/>
+                    </MenuItem>
+                </Menu>
+                <Menu>
+                    <MenuItem Header="Views">
+                        <MenuItem Header="All saved views"/>
+                    </MenuItem>
+                </Menu>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox>
+                <ComboBoxItem Content="Title"/>
+                <ComboBoxItem Content="Title &amp; content" IsSelected="True"/>
+                <ComboBoxItem Content="ASN"/>
+                <ComboBoxItem Content="Custom fields"/>
+                <ComboBoxItem Content="File type"/>
+                <ComboBoxItem Content="Advanced search"/>
+            </ComboBox>
+            <TextBox Grid.Column="1"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <Menu>
+                    <MenuItem Header="Tags">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton GroupName="Tags" Content="All" IsChecked="True"/>
+                            <RadioButton GroupName="Tags" Content="Any"/>
+                        </StackPanel>
+                        <TextBox Width="200"/>
+                    </MenuItem>
+                </Menu>
+                <Menu>
+                    <MenuItem Header="Correspondent">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton GroupName="Correspondents" Content="Include" IsChecked="True"/>
+                            <RadioButton GroupName="Correspondents" Content="Exclude"/>
+                        </StackPanel>
+                        <TextBox Width="200"/>
+                    </MenuItem>
+                </Menu>
+                <Menu>
+                    <MenuItem Header="Document type">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton GroupName="DocumentTypes" Content="Include" IsChecked="True"/>
+                            <RadioButton GroupName="DocumentTypes" Content="Exclude"/>
+                        </StackPanel>
+                        <TextBox Width="200"/>
+                    </MenuItem>
+                </Menu>
+                <Menu>
+                    <MenuItem Header="Storage path">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton GroupName="StoragePaths" Content="Include" IsChecked="True"/>
+                            <RadioButton GroupName="StoragePaths" Content="Exclude"/>
+                        </StackPanel>
+                        <TextBox Width="200"/>
+                    </MenuItem>
+                </Menu>
+                <Menu>
+                    <MenuItem Header="Dates">
+                        <TextBlock Text="Created"/>
+                        <Separator/>
+                        <ComboBox Width="110">
+                            <ComboBoxItem Content="Within 1 week"/>
+                            <ComboBoxItem Content="Within 1 month"/>
+                            <ComboBoxItem Content="Within 3 months"/>
+                            <ComboBoxItem Content="Within 1 year"/>
+                            <ComboBoxItem Content="This year"/>
+                            <ComboBoxItem Content="This month"/>
+                            <ComboBoxItem Content="Today"/>
+                            <ComboBoxItem Content="Yesterday"/>
+                        </ComboBox>
+                        <Separator/>
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="From" Width="100"/>
+                                    <TextBox Text="mm/dd/yyyy" Width="150"/>
+                                    <Button Content="Calendar" Width="50"/>
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="To" Width="100"/>
+                                    <TextBox Text="mm/dd/yyyy" Width="150"/>
+                                    <Button Content="Calendar" Width="50"/>
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <TextBlock Text="Added"/>
+                        <Separator/>
+                        <ComboBox Width="110">
+                            <ComboBoxItem Content="Within 1 week"/>
+                            <ComboBoxItem Content="Within 1 month"/>
+                            <ComboBoxItem Content="Within 3 months"/>
+                            <ComboBoxItem Content="Within 1 year"/>
+                            <ComboBoxItem Content="This year"/>
+                            <ComboBoxItem Content="This month"/>
+                            <ComboBoxItem Content="Today"/>
+                            <ComboBoxItem Content="Yesterday"/>
+                        </ComboBox>
+                        <Separator/>
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="From" Width="100"/>
+                                    <TextBox Text="mm/dd/yyyy" Width="150"/>
+                                    <Button Content="Calendar" Width="50"/>
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem>
+                            <MenuItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="To" Width="100"/>
+                                    <TextBox Text="mm/dd/yyyy" Width="150"/>
+                                    <Button Content="Calendar" Width="50"/>
+                                </StackPanel>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+                <Menu>
+                    <MenuItem Header="Permissions">
+                        <MenuItem Header="All" IsCheckable="True" IsChecked="True"/>
+                        <MenuItem Header="My documents" IsCheckable="True"/>
+                        <MenuItem Header="Shared with me" IsCheckable="True"/>
+                        <MenuItem Header="Shared by me" IsCheckable="True"/>
+                        <MenuItem Header="Unowned" IsCheckable="True"/>
+                        <MenuItem Header="Hide unowned" IsCheckable="True"/>
+                    </MenuItem>
+                </Menu>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
