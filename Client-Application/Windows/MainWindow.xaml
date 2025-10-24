@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApplication"
         mc:Ignorable="d" d:Height="500" Width="800"
-        Title="Paperless-ngx">
+        Title="Paperless-ngx" Background="{StaticResource BackgroundColor}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -16,16 +16,18 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Paperless-ngx" Grid.Column="0" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
-        <Grid HorizontalAlignment="Stretch" Grid.Column="1">
+        <Rectangle Grid.ColumnSpan="3" Fill="{StaticResource AccentColor}"/>
+        <Rectangle Grid.Row="1" Fill="{StaticResource BackgroundLightColor}"/>
+        <TextBlock Text="Paperless-ngx" Style="{StaticResource TitleText}" VerticalAlignment="Center" Padding="10"/>
+        <Grid HorizontalAlignment="Stretch" Grid.Column="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*" MaxWidth="400"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Search"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" MinWidth="100"/>
+            <Button Content="Search" Margin="0"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" MinWidth="100" Margin="0" VerticalContentAlignment="Center"/>
         </Grid>
-        <Menu Grid.Column="2">
+        <Menu Grid.Column="2" Padding="10">
             <MenuItem Header="Notifications">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Notifications" Width="200"/>
@@ -41,7 +43,7 @@
                 <MenuItem Header="Documentation"/>
             </MenuItem>
         </Menu>
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="10">
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -50,35 +52,35 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
-                    <Button Content="Dashboard"/>
-                    <Button Content="Documents" Tag="DocumentsView" Click="SelectTab"/>
+                    <Button Content="Dashboard" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="Documents" Style="{StaticResource NavigationPaneButton}" Tag="DocumentsView" Click="SelectTab"/>
                     <Separator Visibility="Hidden" Height="40"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
-                    <Label Content="MANAGE"/>
-                    <Button Content="Correspondents"/>
-                    <Button Content="Tags"/>
-                    <Button Content="Document Types"/>
-                    <Button Content="Storage Paths"/>
-                    <Button Content="Custom Fields"/>
-                    <Button Content="Saved Views"/>
-                    <Button Content="Workflows"/>
+                    <TextBlock Text="MANAGE" Style="{StaticResource NavigationPaneText}"/>
+                    <Button Content="Correspondents" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="Tags" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="Document Types" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="Storage Paths" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="Custom Fields" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="Saved Views" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="Workflows" Style="{StaticResource NavigationPaneButton}"/>
                     <Separator Visibility="Hidden" Height="20"/>
                 </StackPanel>
                 <StackPanel Grid.Row="2">
-                    <Label Content="ADMINISTRATION"/>
-                    <Button Content="Settings"/>
-                    <Button Content="File Tasks"/>
+                    <TextBlock Text="ADMINISTRATION" Style="{StaticResource NavigationPaneText}"/>
+                    <Button Content="Settings" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="File Tasks" Style="{StaticResource NavigationPaneButton}"/>
                     <Separator Visibility="Hidden" Height="10"/>
                 </StackPanel>
                 <StackPanel Grid.Row="3">
-                    <Button Content="Documentation"/>
-                    <Button Content="Paperless-ngx version"/>
+                    <Button Content="Documentation" Style="{StaticResource NavigationPaneButton}"/>
+                    <Button Content="Paperless-ngx version" Style="{StaticResource NavigationPaneButton}"/>
                     <Separator Visibility="Hidden" Height="10"/>
                 </StackPanel>
             </Grid>
         </ScrollViewer>
-        <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="10">
             <ContentControl x:Name="TabContent"/>
         </ScrollViewer>
     </Grid>

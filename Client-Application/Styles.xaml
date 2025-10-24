@@ -9,7 +9,7 @@
         <Setter Property="Background" Value="Transparent"/>
     </Style>
     <Style TargetType="Grid">
-        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+        <Setter Property="Background" Value="Transparent"/>
     </Style>
     <Style TargetType="Border">
         <!--Setter Property="CornerRadius" Value="5"/-->
@@ -31,7 +31,7 @@
         </ScrollViewer>
     </Popup-->
     <Style TargetType="Menu">
-        <Setter Property="Background" Value="{StaticResource BackgroundLightColor}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
@@ -54,14 +54,17 @@
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
-    <Style x:Key="NavigationPaneButton" TargetType="Button">
+    <Style x:Key="NavigationPaneText" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Height" Value="25"/>
+    </Style>
+    <Style x:Key="NavigationPaneButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="25">
                         <TextBlock x:Name="IconPart" Text="Icon" Margin="0,0,5,0"/>
-                        <TextBlock x:Name="TextPart" FontSize="14" FontWeight="SemiBold" Text="{TemplateBinding Content}"/>
+                        <TextBlock x:Name="TextPart" FontSize="14" FontWeight="SemiBold" Text="{TemplateBinding Content}" Style="{StaticResource NavigationPaneText}"/>
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
