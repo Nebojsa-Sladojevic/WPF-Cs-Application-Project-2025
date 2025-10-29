@@ -1,4 +1,6 @@
-﻿using ClientApplication.Panels;
+﻿using ClientApplication.CustomUI;
+using ClientApplication.Panels;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,30 +14,38 @@ using System.Windows.Shapes;
 
 namespace ClientApplication.Windows
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
-        private Button _selectedTab = null;
+        public static MainWindow Instance { get; private set; }
+        private NavigationPaneButton? _selectedTab = null;
         public MainWindow()
         {
+            if (Instance != null)
+                throw new System.Exception("Only one instance of MainWindow is allowed.");
+            Instance = this;
             InitializeComponent();
         }
 
-        private void SelectTab(object sender, RoutedEventArgs e)
+        public void SelectTab(object sender, RoutedEventArgs e)
         {
-            Button clickedTab = sender as Button;
+            NavigationPaneButton clickedTab = sender as NavigationPaneButton;
             if (clickedTab == _selectedTab)
                 return;
+            if (_selectedTab != null)
+                _selectedTab.IsTogglePressed = false;
             _selectedTab = clickedTab;
+            clickedTab.IsTogglePressed = true;
             UpdateTabContent(clickedTab.Tag as string);
         }
 
-        private void UpdateTabContent(string tabTag)
+        private void UpdateTabContent(string? tabTag)
         {
             switch (tabTag)
             {
+                case null:
+                    TabContent.Content = new Grid();
+                    break;
                 case "DocumentsView":
                     TabContent.Content = new DocumentsPanel();
                     break;

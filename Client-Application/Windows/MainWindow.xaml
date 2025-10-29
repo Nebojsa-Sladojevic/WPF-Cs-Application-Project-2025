@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ClientApplication"
+        xmlns:local="clr-namespace:ClientApplication.CustomUI"
         mc:Ignorable="d" d:Height="500" Width="800"
         Title="Paperless-ngx" Background="{StaticResource BackgroundColor}">
     <Grid>
@@ -52,30 +52,30 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
-                    <Button Content="Dashboard" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="Documents" Style="{StaticResource NavigationPaneButton}" Tag="DocumentsView" Click="SelectTab"/>
+                    <local:NavigationPaneButton Content="Dashboard"/>
+                    <local:NavigationPaneButton Content="Documents" Tag="DocumentsView"/>
                     <Separator Visibility="Hidden" Height="40"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1">
                     <TextBlock Text="MANAGE" Style="{StaticResource NavigationPaneText}"/>
-                    <Button Content="Correspondents" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="Tags" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="Document Types" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="Storage Paths" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="Custom Fields" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="Saved Views" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="Workflows" Style="{StaticResource NavigationPaneButton}"/>
+                    <local:NavigationPaneButton Content="Correspondents"/>
+                    <local:NavigationPaneButton Content="Tags"/>
+                    <local:NavigationPaneButton Content="Document Types"/>
+                    <local:NavigationPaneButton Content="Storage Paths"/>
+                    <local:NavigationPaneButton Content="Custom Fields"/>
+                    <local:NavigationPaneButton Content="Saved Views"/>
+                    <local:NavigationPaneButton Content="Workflows"/>
                     <Separator Visibility="Hidden" Height="20"/>
                 </StackPanel>
                 <StackPanel Grid.Row="2">
                     <TextBlock Text="ADMINISTRATION" Style="{StaticResource NavigationPaneText}"/>
-                    <Button Content="Settings" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="File Tasks" Style="{StaticResource NavigationPaneButton}"/>
+                    <local:NavigationPaneButton Content="Settings"/>
+                    <local:NavigationPaneButton Content="File Tasks"/>
                     <Separator Visibility="Hidden" Height="10"/>
                 </StackPanel>
                 <StackPanel Grid.Row="3">
-                    <Button Content="Documentation" Style="{StaticResource NavigationPaneButton}"/>
-                    <Button Content="Paperless-ngx version" Style="{StaticResource NavigationPaneButton}"/>
+                    <local:NavigationPaneButton Content="Documentation"/>
+                    <local:NavigationPaneButton Content="Paperless-ngx version"/>
                     <Separator Visibility="Hidden" Height="10"/>
                 </StackPanel>
             </Grid>
