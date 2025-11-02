@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Geometry x:Key="UndefinedIcon">M0,0 L100,0 L100,100 L0,100 Z</Geometry>
+    <Geometry x:Key="ComboBoxDownArrow">M0,0 L4,4 8,0 z</Geometry>
     <!--Geometry x:Key="PaperlessNgxLogo"></Geometry>
     <Geometry x:Key="DashboardNavPaneIcon"></Geometry>
     <Geometry x:Key="DocumentsNavPaneIcon"></Geometry>

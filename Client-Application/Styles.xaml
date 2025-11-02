@@ -26,11 +26,6 @@
         <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
         <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
     </Style>
-    <!--Popup Placement="Bottom" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
-        <ScrollViewer x:Name="DropDownScrollViewer">
-            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained"/>
-        </ScrollViewer>
-    </Popup-->
     <Style TargetType="Menu">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
@@ -68,8 +63,7 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Path Style="{StaticResource NavPaneIcon}" Margin="5,0" VerticalAlignment="Stretch"/>
                         <TextBlock Style="{StaticResource NavigationPaneText}" FontWeight="Medium" VerticalAlignment="Stretch"
-                                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
-                                   Text="{TemplateBinding Content}"/>
+                                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}" Text="{TemplateBinding Content}"/>
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -84,32 +78,71 @@
         </Setter>
     </Style>
     <Style TargetType="ComboBox">
-        <!--Setter Property="Background" Value="{StaticResource BackgroundLightColor}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/-->
+        <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
-                    <Button x:Name="Button" Background="{StaticResource BackgroundLightColor}">
-                        <Grid x:Name="MainGrid" Background="Transparent">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <ContentPresenter x:Name="ContentSite" Content="{TemplateBinding SelectionBoxItem}"
-                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            <Path x:Name="Arrow" Grid.Column="1" Data="M0,0 L4,4 8,0 z" Margin="5,0,0,0"
-                                  Fill="{StaticResource AccentColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform"/>
-                            <Popup x:Name="PART_Popup" Placement="Bottom" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}">
-                                <ScrollViewer>
-                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
+                    <Grid>
+                        <ToggleButton x:Name="PART_Button" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" Foreground="{TemplateBinding Foreground}"
+                                  BorderThickness="{TemplateBinding BorderThickness}" Padding="8,0">
+                            <DockPanel>
+                                <!-- Add this to Arrow: RenderTransformOrigin="0.5,0.5"-->
+                                <Path x:Name="Arrow" DockPanel.Dock="Right" Data="{StaticResource ComboBoxDownArrow}" Fill="{TemplateBinding Foreground}"
+                                      Height="4" VerticalAlignment="Center" Stretch="Uniform" Margin="5,0,0,0"/>
+                                <ContentPresenter Content="{TemplateBinding SelectionBoxItem}" VerticalAlignment="Center"/>
+                            </DockPanel>
+                        </ToggleButton>
+                        <Popup x:Name="PART_Popup" Placement="Bottom" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}">
+                            <Border Background="{StaticResource BackgroundColor}" BorderBrush="{StaticResource BackgroundLightColor}"
+                                    BorderThickness="1" SnapsToDevicePixels="True">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <StackPanel IsItemsHost="True"/>
                                 </ScrollViewer>
-                            </Popup>
-                        </Grid>
-                    </Button>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Button" Property="BorderBrush" Value="{StaticResource AccentHighlightColor}"/>
+                            <Setter Property="Background" Value="{StaticResource AccentHighlightColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsDropDownOpen" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource AccentHighlightColor}"/>
+                            <!--Setter TargetName="Arrow" Property="RenderTransform">
+                                <Setter.Value> <RotateTransform Angle="180"/> </Setter.Value>
+                            </Setter-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="Padding" Value="8,6"/>
+        <!--Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBoxItem">
+                    <Border x:Name="Border" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="8,6">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource BackgroundLightColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentHighlightColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
