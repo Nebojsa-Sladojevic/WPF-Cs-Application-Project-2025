@@ -14,6 +14,7 @@
     </Style>
     <Style TargetType="Border">
         <!--Setter Property="CornerRadius" Value="5"/-->
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
     </Style>
     <Style TargetType="Button" BasedOn="{StaticResource ButtonDimensions}">
         <Setter Property="Background" Value="{StaticResource BackgroundLightColor}"/>
@@ -35,9 +36,6 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
         <Setter Property="BorderThickness" Value="1"/>
-    </Style>
-    <Style TargetType="RadioButton" BasedOn="{StaticResource ButtonDimensions}">
-        <Setter Property="Background" Value="{StaticResource BackgroundLightColor}"/>
     </Style>
     <!--Style TargetType="CheckBox">
         <Setter Property="Background" Value="{StaticResource BackgroundLightColor}"/>
@@ -140,6 +138,45 @@
                             <Setter TargetName="Border" Property="Background" Value="{StaticResource BackgroundLightColor}"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentHighlightColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="RadioButton" BasedOn="{StaticResource ButtonDimensions}">
+        <Setter Property="Foreground" Value="{StaticResource AccentHighlightColor}"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource AccentHighlightColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border x:Name="Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                            BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center">
+                            <ContentPresenter.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Foreground="{Binding RelativeSource={RelativeSource AncestorType=RadioButton}, Path=Foreground}" />
+                                </DataTemplate>
+                            </ContentPresenter.ContentTemplate>
+                        </ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundColor}"/>
+                            <Setter Property="Background" Value="{StaticResource AccentHighlightColor}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource AccentHighlightColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundColor}"/>
+                            <Setter Property="Background" Value="{StaticResource AccentHoverColor}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentHoverColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundColor}"/>
+                            <Setter Property="Background" Value="{StaticResource AccentHighlightColor}"/>
                             <Setter TargetName="Border" Property="Background" Value="{StaticResource AccentHighlightColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
