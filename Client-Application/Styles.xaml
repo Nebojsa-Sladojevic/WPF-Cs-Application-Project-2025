@@ -15,6 +15,7 @@
     <Style TargetType="Border">
         <!--Setter Property="CornerRadius" Value="5"/-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
     </Style>
     <Style TargetType="Button" BasedOn="{StaticResource ButtonDimensions}">
         <Setter Property="Background" Value="{StaticResource BackgroundLightColor}"/>
@@ -26,6 +27,8 @@
     <Style TargetType="TextBox" BasedOn="{StaticResource ButtonDimensions}">
         <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
         <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
     <Style TargetType="Menu">
         <Setter Property="Background" Value="Transparent"/>

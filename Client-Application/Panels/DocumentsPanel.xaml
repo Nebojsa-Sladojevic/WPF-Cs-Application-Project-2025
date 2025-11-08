@@ -12,7 +12,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <Label Content="Documents" FontSize="20" FontWeight="Bold"/>
-            <StackPanel Orientation="Horizontal" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
                 <Menu>
                     <MenuItem Header="Select">
                         <MenuItem Header="Select none"/>
@@ -22,22 +22,22 @@
                 </Menu>
                 <Menu>
                     <MenuItem Header="Show">
-                        <CheckBox Content="Title" IsChecked="True"/>
-                        <CheckBox Content="Created" IsChecked="True"/>
-                        <CheckBox Content="Added" IsChecked="False"/>
-                        <CheckBox Content="Tags" IsChecked="True"/>
-                        <CheckBox Content="Correspondent" IsChecked="True"/>
-                        <CheckBox Content="Document type" IsChecked="True"/>
-                        <CheckBox Content="Storag path" IsChecked="True"/>
-                        <CheckBox Content="Notes" IsChecked="True"/>
-                        <CheckBox Content="Shared" IsChecked="True"/>
-                        <CheckBox Content="ASN" IsChecked="True"/>
-                        <CheckBox Content="Pages" IsChecked="True"/>
+                        <CheckBox IsChecked="True" Content="Title"/>
+                        <CheckBox IsChecked="True" Content="Created"/>
+                        <CheckBox IsChecked="False" Content="Added"/>
+                        <CheckBox IsChecked="True" Content="Tags"/>
+                        <CheckBox IsChecked="True" Content="Correspondent"/>
+                        <CheckBox IsChecked="True" Content="Document type"/>
+                        <CheckBox IsChecked="True" Content="Storag path"/>
+                        <CheckBox IsChecked="True" Content="Notes"/>
+                        <CheckBox IsChecked="True" Content="Shared"/>
+                        <CheckBox IsChecked="True" Content="ASN"/>
+                        <CheckBox IsChecked="True" Content="Pages"/>
                     </MenuItem>
                 </Menu>
-                <RadioButton GroupName="ViewDocuments" Content="List"/>
-                <RadioButton GroupName="ViewDocuments" Content="Grid" IsChecked="True"/>
-                <RadioButton GroupName="ViewDocuments" Content="Tiles"/>
+                <RadioButton GroupName="ViewDocuments" Content="List" Margin="5,0,0,0" BorderThickness="1,1,0,1"/>
+                <RadioButton GroupName="ViewDocuments" Content="Grid" Margin="0,0,0,0" BorderThickness="1,1,0,1" IsChecked="True"/>
+                <RadioButton GroupName="ViewDocuments" Content="Tiles" Margin="0,0,5,0" BorderThickness="1,1,1,1"/>
                 <Menu>
                     <MenuItem Header="Sort">
                         <StackPanel Orientation="Horizontal">
@@ -77,7 +77,7 @@
                 <ComboBoxItem Content="File type"/>
                 <ComboBoxItem Content="Advanced search"/>
             </ComboBox>
-            <TextBox Grid.Column="1"/>
+            <TextBox Grid.Column="1" Margin="0,0,10,0" BorderThickness="0,1,1,1"/>
             <StackPanel Orientation="Horizontal" Grid.Column="2">
                 <Menu>
                     <MenuItem Header="Tags">
@@ -185,14 +185,15 @@
                 </Menu>
                 <Menu>
                     <MenuItem Header="Permissions">
-                        <MenuItem Header="All" IsCheckable="True" IsChecked="True"/>
-                        <MenuItem Header="My documents" IsCheckable="True"/>
-                        <MenuItem Header="Shared with me" IsCheckable="True"/>
-                        <MenuItem Header="Shared by me" IsCheckable="True"/>
-                        <MenuItem Header="Unowned" IsCheckable="True"/>
-                        <MenuItem Header="Hide unowned" IsCheckable="True"/>
+                        <MenuItem IsCheckable="True" Header="All" IsChecked="True"/>
+                        <MenuItem IsCheckable="True" Header="My documents"/>
+                        <MenuItem IsCheckable="True" Header="Shared with me"/>
+                        <MenuItem IsCheckable="True" Header="Shared by me"/>
+                        <MenuItem IsCheckable="True" Header="Unowned"/>
+                        <MenuItem IsCheckable="True" Header="Hide unowned"/>
                     </MenuItem>
                 </Menu>
+                <Button Content="Reset flter" Margin="14,0,4,0"/>
             </StackPanel>
         </Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">

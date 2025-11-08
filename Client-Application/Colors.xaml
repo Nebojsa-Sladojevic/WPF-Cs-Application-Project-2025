@@ -4,7 +4,7 @@
     <SolidColorBrush x:Key="BackgroundLightColor" Color="#1c1c1f"/>
     <SolidColorBrush x:Key="TextColor" Color="#abb2bf"/>
     <SolidColorBrush x:Key="AccentColor" Color="#17541f"/>
-    <SolidColorBrush x:Key="AccentHoverColor" Color="#17541f"/>
+    <SolidColorBrush x:Key="AccentHoverColor" Color="#227c2e"/>
     <SolidColorBrush x:Key="BorderColor" Color="#47494f"/>
-    <SolidColorBrush x:Key="AccentHighlightColor" Color="#17541f"/>
+    <SolidColorBrush x:Key="AccentHighlightColor" Color="#227c2e"/>
 </ResourceDictionary>
