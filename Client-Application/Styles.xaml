@@ -32,14 +32,14 @@
     </Style>
     <Style TargetType="Menu">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
-    <Style TargetType="MenuItem" BasedOn="{StaticResource ButtonDimensions}">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-    </Style>
+    <!--Style TargetType="Popup">
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="PopupAnimation" Value="Fade"/>
+        <Setter Property="Placement" Value="Bottom"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+    </Style-->
     <!--Style TargetType="CheckBox">
         <Setter Property="Background" Value="{StaticResource BackgroundLightColor}"/>
         <Setter Property="Foreground" Value="White"/>
@@ -75,6 +75,102 @@
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="MenuItem" BasedOn="{StaticResource ButtonDimensions}">
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource AccentHighlightColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource AccentHighlightColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Grid>
+                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                            <DockPanel>
+                                <!--ContentPresenter x:Name="Icon" Grid.Column="0" Content="{TemplateBinding Icon}"
+                                              Margin="0,0,4,0" VerticalAlignment="Center"/>
+                                <Path x:Name="Checkbox" Data="" Fill="{TemplateBinding Foreground}" Visibility="Hidden" Margin="0,0,4,0"/-->
+                                <Path DockPanel.Dock="Right" Data="{StaticResource ComboBoxDownArrow}" VerticalAlignment="Center"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}" Margin="4,0,0,0"/>
+                                <ContentPresenter VerticalAlignment="Center" Content="{TemplateBinding Header}" RecognizesAccessKey="True">
+                                    <ContentPresenter.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" Foreground="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Path=Foreground}" />
+                                        </DataTemplate>
+                                    </ContentPresenter.ContentTemplate>
+                                </ContentPresenter>
+                            </DockPanel>
+                        </Border>
+                        <Popup Placement="Bottom" IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True">
+                            <Border Background="{StaticResource BackgroundColor}" BorderBrush="Black" BorderThickness="1">
+                                <StackPanel IsItemsHost="True"/>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundColor}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
+                        </Trigger>
+                        <!--Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AccentHighlightColor}" />
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundColor}" />
+                        </Trigger-->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AccentHighlightColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource BackgroundColor}"/>
+                        </Trigger>
+                        <!--Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource AccentHighlightColor}"/>
+                        </Trigger-->
+                        <!--Trigger Property="Role" Value="TopLevelHeader">
+                            <Setter Property="Padding" Value="12,6" />
+                        </Trigger-->
+                        <Trigger Property="IsSubmenuOpen" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="MenuItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+                    <Setter Property="Padding" Value="16,8"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="MenuItem">
+                                <Border Background="{TemplateBinding Background}" BorderThickness="0" Padding="{TemplateBinding Padding}">
+                                    <DockPanel>
+                                        <Path x:Name="CheckMark" Data="M0,5 L2,7 7,0" Stroke="Transparent"
+                                                  StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <ContentPresenter Content="{TemplateBinding Header}" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+                                    </DockPanel>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <!--Trigger Property="IsChecked" Value="True">
+                                        <Setter TargetName="CheckMark" Property="Stroke" Value="#FF2D5F8A"/>
+                                    </Trigger-->
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource BackgroundDarkColor}"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <!--Setter TargetName="CheckMark" Property="Stroke" Value="White"/-->
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
             </Setter.Value>
         </Setter>
     </Style>
