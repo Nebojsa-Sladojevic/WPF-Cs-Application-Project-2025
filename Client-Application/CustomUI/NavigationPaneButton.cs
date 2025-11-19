@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace ClientApplication.CustomUI
 {
-    class NavigationPaneButton : IconTextButton
+    internal class NavigationPaneButton : IconTextButton
     {
         public static readonly DependencyProperty IsTogglePressedProperty =
                     DependencyProperty.Register(nameof(IsTogglePressed), typeof(bool), typeof(NavigationPaneButton), new PropertyMetadata(false));

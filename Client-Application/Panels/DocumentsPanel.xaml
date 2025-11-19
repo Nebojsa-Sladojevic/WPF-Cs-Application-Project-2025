@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClientApplication.Panels"
-             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:customUI="clr-namespace:ClientApplication.CustomUI"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="1000">
     <DockPanel>
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
@@ -35,9 +36,11 @@
                         <CheckBox IsChecked="True" Content="Pages"/>
                     </MenuItem>
                 </Menu>
-                <RadioButton GroupName="ViewDocuments" Content="List" Margin="5,0,0,0" BorderThickness="1,1,0,1"/>
-                <RadioButton GroupName="ViewDocuments" Content="Grid" Margin="0,0,0,0" BorderThickness="1,1,0,1" IsChecked="True"/>
-                <RadioButton GroupName="ViewDocuments" Content="Tiles" Margin="0,0,5,0" BorderThickness="1,1,1,1"/>
+                <customUI:ButtonsGroup Margin="4,0">
+                    <RadioButton GroupName="ViewDocuments" Content="List" BorderThickness="1,1,0,1"/>
+                    <RadioButton GroupName="ViewDocuments" Content="Grid" BorderThickness="1,1,0,1" IsChecked="True"/>
+                    <RadioButton GroupName="ViewDocuments" Content="Tiles" BorderThickness="1,1,1,1"/>
+                </customUI:ButtonsGroup>
                 <Menu>
                     <MenuItem Header="Sort">
                         <StackPanel Orientation="Horizontal">
