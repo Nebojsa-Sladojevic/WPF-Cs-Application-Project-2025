@@ -1,0 +1,16 @@
+﻿<Window x:Class="ClientApplication.Windows.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:Height="450" d:Width="450"
+        Title="SignInWindow" Background="{StaticResource BackgroundColor}"
+        SizeToContent="WidthAndHeight" Loaded="Window_Loaded">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Margin="50">
+        <ContentControl Content="{StaticResource SignInLogo}" HorizontalAlignment="Stretch" Margin="0,0,0,24"/>
+        <TextBlock Text="Please sign in." HorizontalAlignment="Center" Margin="0,0,0,16"/>
+        <TextBox Text="Username" HorizontalAlignment="Stretch" Margin="0"/>
+        <TextBox Text="Password" HorizontalAlignment="Stretch" Margin="0"/>
+        <Button Content="Sign in" HorizontalAlignment="Stretch" Margin="0,16,0,0"/>
+    </StackPanel>
+</Window>

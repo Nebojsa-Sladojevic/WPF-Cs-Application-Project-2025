@@ -2,13 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ClientApplication"
-             StartupUri="Windows\MainWindow.xaml">
+             StartupUri="Windows\SigninWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Colors.xaml"/>
                 <ResourceDictionary Source="Icons.xaml"/>
                 <ResourceDictionary Source="IconStyles.xaml"/>
-                <ResourceDictionary Source="Colors.xaml"/>
                 <ResourceDictionary Source="Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -14,4 +14,10 @@
         <Setter Property="Width" Value="16"/>
         <Setter Property="Height" Value="16"/>
     </Style>
+    <Viewbox x:Key="SignInLogo" Stretch="Uniform">
+        <Grid>
+            <Path Data="{StaticResource Logo.Leaf}" Fill="{StaticResource AccentColor}"/>
+            <Path Data="{StaticResource Logo.Letters}" Fill="{StaticResource TextColor}"/>
+        </Grid>
+    </Viewbox>
 </ResourceDictionary>
